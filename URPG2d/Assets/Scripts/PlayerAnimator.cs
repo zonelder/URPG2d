@@ -4,6 +4,9 @@ public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private Movement _unitMove;
+    [SerializeField] private SpriteRenderer _sprite;
+
+    public int Facing => (_sprite.flipX)?(-1):(1);
 
     private void Start()
     {
@@ -26,13 +29,18 @@ public class PlayerAnimator : MonoBehaviour
             _animator.SetBool("Grounded", false);
         }
 
+        if (_unitMove.Velocity.x > 0)
+        {
+           _sprite.flipX = false;
+        }
+
+        else if (_unitMove.Velocity.x < 0)
+        {
+            _sprite.flipX = true;
+        }
 
         // Set AirSpeed in animator
         _animator.SetFloat("AirSpeedY", _unitMove.Velocity.y);
-
-        // Set Animation layer for hiding sword
-        int boolInt =_unitMove.IsHideSword ? 1 : 0;
-        _animator.SetLayerWeight(1, boolInt);
 
                 //Run
          if (_unitMove.IsMoving)
@@ -47,12 +55,10 @@ public class PlayerAnimator : MonoBehaviour
     {
       
         _animator.SetTrigger("Jump");
-        //_animator.SetBool("Grounded", false);
 
     }
     private void AE_OnJumpToFall()
     {
-        Debug.Log("in JUm Tofall");
         _animator.ResetTrigger("Jump");
 
     }

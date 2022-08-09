@@ -148,12 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7734206f42aaccf4192e9813974f3c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hideSword: 0
-  _minGroundNormalY: 0.65
   _velocity: {x: 0, y: 0}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   _groundSensor: {fileID: 5628842386942665307}
 --- !u!114 &5628842385642692024
 MonoBehaviour:
@@ -169,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5628842385642692025}
   _unitMove: {fileID: 5628842385642692027}
+  _sprite: {fileID: 5628842385642692028}
 --- !u!95 &5628842385642692025
 Animator:
   serializedVersion: 3
@@ -201,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitMove: {fileID: 5628842385642692027}
+  _animator: {fileID: 5628842385642692024}
   _runDust: {fileID: 7310271610845027193, guid: 39afca3c109b26049a80bc07593eb271, type: 3}
   _jumpDust: {fileID: 8935918012585647707, guid: 4a4123fbc8b39d441868897a71d2b2b1, type: 3}
   _landingDust: {fileID: 9076098953984712191, guid: 0b745be9abb3a6d4dadd8705950196d1, type: 3}
