@@ -25,6 +25,8 @@ public class Movement:MonoBehaviour
     public bool IsMoving => _isMove;
     public bool IsGrounded => _groundSensor.State();
 
+    public LayerMask LayerMask => _layerMask;
+
     public Vector2 Velocity => _velocity;
     private void Awake()
     {

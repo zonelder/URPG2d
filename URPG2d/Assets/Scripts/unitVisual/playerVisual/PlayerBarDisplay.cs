@@ -25,10 +25,10 @@ public class PlayerBarDisplay : MonoBehaviour
             UnitEntity PlayerSt = Char;
 
 
-            float MaxHealth = PlayerSt.Improved.HP.Max;
-            float CurHealth = PlayerSt.Improved.HP.Current();
-            float MaxMana = PlayerSt.Improved.MP.Max;
-            float CurMana = PlayerSt.Improved.MP.Current();
+            float MaxHealth = PlayerSt.Stats.HP.Max;
+            float CurHealth = PlayerSt.Stats.HP.Current();
+            float MaxMana = PlayerSt.Stats.MP.Max;
+            float CurMana = PlayerSt.Stats.MP.Current();
 
 
             float HealthBarLen = CurHealth / MaxHealth;

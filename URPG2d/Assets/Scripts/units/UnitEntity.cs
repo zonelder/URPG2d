@@ -24,7 +24,7 @@ public class UnitEntity : MonoBehaviour
     [SerializeField] private LifeStates state;
     public Level Exp;
 
-    public Stats Improved;
+    public Stats Stats;
 
     private Coroutine _MPAtrophy;
     private Coroutine _HPAtrophy;
@@ -32,8 +32,8 @@ public class UnitEntity : MonoBehaviour
     private void Start()
     {
         state = LifeStates.STABLE;
-        StartCoroutine(Improved.HP.RegenerateByTime());
-        StartCoroutine(Improved.MP.RegenerateByTime());
+        StartCoroutine(Stats.HP.RegenerateByTime());
+        StartCoroutine(Stats.MP.RegenerateByTime());
 
     }
     private void OnHPOver()
@@ -46,7 +46,7 @@ public class UnitEntity : MonoBehaviour
         }
         else
         {
-            _MPAtrophy = StartCoroutine(Improved.MP.StartAtrophy());
+            _MPAtrophy = StartCoroutine(Stats.MP.StartAtrophy());
             state = LifeStates.BODY_ON_THE_EDGE;
         }
     }
@@ -60,43 +60,34 @@ public class UnitEntity : MonoBehaviour
         }
         else
         {
-            _HPAtrophy = StartCoroutine(Improved.HP.StartAtrophy());
+            _HPAtrophy = StartCoroutine(Stats.HP.StartAtrophy());
             state = LifeStates.MIND_ON_THE_EDGE;
 
         }
     }
-    public void GoBodiless()
-    {
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
-    }
-    public void GoBodily()
-    {
-        GetComponent<MeshRenderer>().enabled = true;
-        GetComponent<Collider>().enabled = true;
-    }
+
     public void Revive()
     {
         if (IsAlive)
             throw new System.InvalidOperationException("unit is already alive");
         OnRevive?.Invoke();
         state = LifeStates.STABLE;
-        Improved.HP.Refresh();
+        Stats.HP.Refresh();
 
-        Improved.MP.Refresh();
+        Stats.MP.Refresh();
     }
     public void Kill()
     {
         state = LifeStates.DEAD;
-        Improved.HP.SetEmpty();
-        Improved.MP.SetEmpty();
+        Stats.HP.SetEmpty();
+        Stats.MP.SetEmpty();
     }
     public bool IsAlive => state != LifeStates.DEAD;
 
-    public void GetDamage(GeneratedDamage damage)
+    private void GetDamage(GeneratedDamage damage)
     {
         InfluenceTakenDamage?.Invoke(ref damage);
-        Improved.HP.DistractFromCurrent(damage);
+        Stats.HP.DistractFromCurrent(damage);
         OnGetDamage?.Invoke(this, damage);
 
     }
@@ -104,7 +95,7 @@ public class UnitEntity : MonoBehaviour
     {
         if (enemy != this)
         {
-            GeneratedDamage calculatedDamage = Improved.CalculateDamage();
+            GeneratedDamage calculatedDamage = Stats.CalculateDamage();
             enemy.GetDamage(calculatedDamage);
             OnDoneDamage?.Invoke(enemy, calculatedDamage);
 
@@ -115,7 +106,7 @@ public class UnitEntity : MonoBehaviour
             }
         }
     }
-    public bool UnitDead() => Improved.HP.Current() <= 0;
+    public bool UnitDead() => Stats.HP.Current() <= 0;
 
     //имитаци€ физики(убрать/помен€ь)
     private void OnTriggerEnter(Collider collision)
@@ -128,12 +119,12 @@ public class UnitEntity : MonoBehaviour
     }
     private void OnEnable()
     {
-        Improved.HP.OnStripOver += OnHPOver;
-        Improved.MP.OnStripOver += OnMPOver;
+        Stats.HP.OnStripOver += OnHPOver;
+        Stats.MP.OnStripOver += OnMPOver;
     }
     private void OnDisable()
     {
-        Improved.HP.OnStripOver -= OnHPOver;
-        Improved.MP.OnStripOver -= OnMPOver;
+        Stats.HP.OnStripOver -= OnHPOver;
+        Stats.MP.OnStripOver -= OnMPOver;
     }
 }

@@ -232,6 +232,42 @@ PrefabInstance:
       propertyPath: mySkin
       value: 
       objectReference: {fileID: 11400000, guid: bb55469d06f1cb248b9a84686c862d4e, type: 2}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.HP._max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.MP._max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.HP._regen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.Damage._max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.Damage._min
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.HP._current
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.MP._current
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.Damage._critChance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758025198755800303, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
+      propertyPath: Stats.Damage.CritMultiplier._value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8534662718950056254, guid: 74f6166af61cec1409d8ce70a9e8cdfe, type: 3}
       propertyPath: m_Name
       value: Unit

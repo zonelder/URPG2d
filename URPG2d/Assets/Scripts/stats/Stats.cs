@@ -10,24 +10,7 @@ namespace stats
         public Strip SP;
 
         public Damage Damage;
-        public SecondaryStats Amplifiers;
-
-        public Stats(BaseStats baseStats)
-        {
-            HP = new Strip(baseStats.HP);
-            MP = new Strip(baseStats.MP);
-            SP = new Strip(baseStats.SP);
-            Damage = new Damage();
-            Amplifiers = new SecondaryStats();
-        }
-
-
-        public Stats()
-        {
-            Damage = new Damage();
-            Amplifiers = new SecondaryStats();
-        }
-
+        public SecondaryStats Amplifiers= new SecondaryStats();
         public GeneratedDamage CalculateDamage()
         {
             GeneratedDamage damage = Damage.calculate();
